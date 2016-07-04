@@ -1,0 +1,87 @@
+{
+  "presents": [{
+    "id": 104,
+    "name": "новый подарок 3",
+    "description": "тест",
+    "score": 50,
+    "imagePath": "https://citycard-dev.s3.amazonaws.com/user/60/1463654278072.avtokit_logo.jpg",
+    "presentCount": 50,
+    "soldOut": false,
+    "soldPresentCount": 10,
+    "sortNumber": 28,
+    "cardIds": [37, 66, 145],
+    "active": true
+  }, {
+    "id": 106,
+    "name": "Молоток SATA",
+    "description": "Комплект",
+    "score": 190,
+    "imagePath": "https://citycard-dev.s3.amazonaws.com/user/60/1463507441416.30(5).jpg",
+    "presentCount": 100,
+    "soldOut": false,
+    "soldPresentCount": 9,
+    "sortNumber": 17,
+    "cardIds": [37],
+    "active": true
+  }, {
+    "id": 107,
+    "name": "Набор инструментов",
+    "description": "Комплект",
+    "score": 100,
+    "imagePath": "https://citycard-dev.s3.amazonaws.com/user/60/1463507314057.BiBRPTkcGhE.jpg",
+    "presentCount": 100,
+    "soldOut": false,
+    "soldPresentCount": 14,
+    "sortNumber": 16,
+    "cardIds": [37],
+    "active": true
+  }, {
+    "id": 159,
+    "name": "Бензопила STIHL",
+    "description": "пр-во Германия",
+    "score": 10000,
+    "imagePath": "https://citycard-dev.s3.amazonaws.com/user/60/1463507401505.benzopila-stihl.jpg",
+    "presentCount": 10,
+    "soldOut": false,
+    "soldPresentCount": 0,
+    "sortNumber": 14,
+    "cardIds": [37],
+    "active": true
+  }, {
+    "id": 160,
+    "name": "Акварель",
+    "description": "qw",
+    "score": 1,
+    "imagePath": "https://citycard-dev.s3.amazonaws.com/user/60/1463657868729.iconCC_iOS.png",
+    "presentCount": 2,
+    "soldOut": true,
+    "soldPresentCount": 1,
+    "sortNumber": 13,
+    "cardIds": [37, 66, 145],
+    "active": true
+  }, {
+    "id": 170,
+    "name": "El",
+    "description": "El",
+    "score": 0,
+    "imagePath": "https://citycard-dev.s3.amazonaws.com/user/60/1465825912122.dog.jpg",
+    "presentCount": 0,
+    "soldOut": false,
+    "soldPresentCount": 0,
+    "sortNumber": 12,
+    "cardIds": [37, 66, 145],
+    "active": true
+  }, {
+    "id": 180,
+    "name": "Я новый!",
+    "description": "Я новый!",
+    "score": 0,
+    "imagePath": "https://citycard-dev.s3.amazonaws.com/user/60/1467189939957.dog.jpg",
+    "presentCount": 0,
+    "soldOut": false,
+    "soldPresentCount": 0,
+    "sortNumber": 1,
+    "cardIds": [37, 66],
+    "active": true
+  }]
+}
