@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import com.mahumapko.smartumtask.Adapters.ViewPagerAdapter;
 import com.mahumapko.smartumtask.Fragments.AboutUsFragment;
 import com.mahumapko.smartumtask.Fragments.MyPresentsFragment;
 import com.mahumapko.smartumtask.Fragments.PresentsFragment;
