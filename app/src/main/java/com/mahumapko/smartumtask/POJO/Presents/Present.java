@@ -2,285 +2,332 @@
 package com.mahumapko.smartumtask.POJO.Presents;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "id",
-    "name",
-    "description",
-    "score",
-    "imagePath",
-    "presentCount",
-    "soldOut",
-    "soldPresentCount",
-    "sortNumber",
-    "cardIds",
-    "active"
-})
 public class Present {
 
-    @JsonProperty("id")
+    @SerializedName("id")
+    @Expose
     private Integer id;
-    @JsonProperty("name")
+    @SerializedName("name")
+    @Expose
     private String name;
-    @JsonProperty("description")
+    @SerializedName("description")
+    @Expose
     private String description;
-    @JsonProperty("score")
+    @SerializedName("score")
+    @Expose
     private Integer score;
-    @JsonProperty("imagePath")
+    @SerializedName("imagePath")
+    @Expose
     private String imagePath;
-    @JsonProperty("presentCount")
+    @SerializedName("presentCount")
+    @Expose
     private Integer presentCount;
-    @JsonProperty("soldOut")
+    @SerializedName("soldOut")
+    @Expose
     private Boolean soldOut;
-    @JsonProperty("soldPresentCount")
+    @SerializedName("soldPresentCount")
+    @Expose
     private Integer soldPresentCount;
-    @JsonProperty("sortNumber")
+    @SerializedName("sortNumber")
+    @Expose
     private Integer sortNumber;
-    @JsonProperty("cardIds")
+    @SerializedName("cardIds")
+    @Expose
     private List<Integer> cardIds = new ArrayList<Integer>();
-    @JsonProperty("active")
+    @SerializedName("active")
+    @Expose
     private Boolean active;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
+     * No args constructor for use in serialization
+     *
+     */
+    public Present() {
+    }
+
+    /**
+     *
+     * @param id
+     * @param cardIds
+     * @param imagePath
+     * @param soldOut
+     * @param description
+     * @param name
+     * @param score
+     * @param active
+     * @param sortNumber
+     * @param presentCount
+     * @param soldPresentCount
+     */
+    public Present(Integer id, String name, String description, Integer score, String imagePath, Integer presentCount, Boolean soldOut, Integer soldPresentCount, Integer sortNumber, List<Integer> cardIds, Boolean active) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.score = score;
+        this.imagePath = imagePath;
+        this.presentCount = presentCount;
+        this.soldOut = soldOut;
+        this.soldPresentCount = soldPresentCount;
+        this.sortNumber = sortNumber;
+        this.cardIds = cardIds;
+        this.active = active;
+    }
+
+    /**
+     *
      * @return
      *     The id
      */
-    @JsonProperty("id")
     public Integer getId() {
         return id;
     }
 
     /**
-     * 
+     *
      * @param id
      *     The id
      */
-    @JsonProperty("id")
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public Present withId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The name
      */
-    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
     /**
-     * 
+     *
      * @param name
      *     The name
      */
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
+    public Present withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The description
      */
-    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
 
     /**
-     * 
+     *
      * @param description
      *     The description
      */
-    @JsonProperty("description")
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public Present withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The score
      */
-    @JsonProperty("score")
     public Integer getScore() {
         return score;
     }
 
     /**
-     * 
+     *
      * @param score
      *     The score
      */
-    @JsonProperty("score")
     public void setScore(Integer score) {
         this.score = score;
     }
 
+    public Present withScore(Integer score) {
+        this.score = score;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The imagePath
      */
-    @JsonProperty("imagePath")
     public String getImagePath() {
         return imagePath;
     }
 
     /**
-     * 
+     *
      * @param imagePath
      *     The imagePath
      */
-    @JsonProperty("imagePath")
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 
+    public Present withImagePath(String imagePath) {
+        this.imagePath = imagePath;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The presentCount
      */
-    @JsonProperty("presentCount")
     public Integer getPresentCount() {
         return presentCount;
     }
 
     /**
-     * 
+     *
      * @param presentCount
      *     The presentCount
      */
-    @JsonProperty("presentCount")
     public void setPresentCount(Integer presentCount) {
         this.presentCount = presentCount;
     }
 
+    public Present withPresentCount(Integer presentCount) {
+        this.presentCount = presentCount;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The soldOut
      */
-    @JsonProperty("soldOut")
     public Boolean getSoldOut() {
         return soldOut;
     }
 
     /**
-     * 
+     *
      * @param soldOut
      *     The soldOut
      */
-    @JsonProperty("soldOut")
     public void setSoldOut(Boolean soldOut) {
         this.soldOut = soldOut;
     }
 
+    public Present withSoldOut(Boolean soldOut) {
+        this.soldOut = soldOut;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The soldPresentCount
      */
-    @JsonProperty("soldPresentCount")
     public Integer getSoldPresentCount() {
         return soldPresentCount;
     }
 
     /**
-     * 
+     *
      * @param soldPresentCount
      *     The soldPresentCount
      */
-    @JsonProperty("soldPresentCount")
     public void setSoldPresentCount(Integer soldPresentCount) {
         this.soldPresentCount = soldPresentCount;
     }
 
+    public Present withSoldPresentCount(Integer soldPresentCount) {
+        this.soldPresentCount = soldPresentCount;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The sortNumber
      */
-    @JsonProperty("sortNumber")
     public Integer getSortNumber() {
         return sortNumber;
     }
 
     /**
-     * 
+     *
      * @param sortNumber
      *     The sortNumber
      */
-    @JsonProperty("sortNumber")
     public void setSortNumber(Integer sortNumber) {
         this.sortNumber = sortNumber;
     }
 
+    public Present withSortNumber(Integer sortNumber) {
+        this.sortNumber = sortNumber;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The cardIds
      */
-    @JsonProperty("cardIds")
     public List<Integer> getCardIds() {
         return cardIds;
     }
 
     /**
-     * 
+     *
      * @param cardIds
      *     The cardIds
      */
-    @JsonProperty("cardIds")
     public void setCardIds(List<Integer> cardIds) {
         this.cardIds = cardIds;
     }
 
+    public Present withCardIds(List<Integer> cardIds) {
+        this.cardIds = cardIds;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The active
      */
-    @JsonProperty("active")
     public Boolean getActive() {
         return active;
     }
 
     /**
-     * 
+     *
      * @param active
      *     The active
      */
-    @JsonProperty("active")
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public Present withActive(Boolean active) {
+        this.active = active;
+        return this;
     }
 
 }

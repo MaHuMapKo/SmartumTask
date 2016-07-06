@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SmartumTask</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="aboutUsTitle">О нас</string>
+    <string name="presentsTitle">Подарки</string>
+    <string name="myPresentsTitle">Мои подарки</string>
+
+    <string name="scoreCount">баллов.</string>
+    <string name="scoreLeft">Осталось</string>
 </resources>
