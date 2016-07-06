@@ -7,4 +7,7 @@
     <string name="aboutUsTitle">О нас</string>
     <string name="presentsTitle">Подарки</string>
     <string name="myPresentsTitle">Мои подарки</string>
+
+    <string name="scoreCount">баллов.</string>
+    <string name="scoreLeft">Осталось</string>
 </resources>
