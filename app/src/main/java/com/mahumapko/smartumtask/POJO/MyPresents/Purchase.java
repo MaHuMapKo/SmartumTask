@@ -1,308 +1,360 @@
 
 package com.mahumapko.smartumtask.POJO.MyPresents;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.mahumapko.smartumtask.POJO.Presents.Present;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "purchaseId",
-    "timestamp",
-    "amount",
-    "score",
-    "earnScore",
-    "purchaseType",
-    "purchaseStatus",
-    "present",
-    "amountPayedByScore",
-    "amountPayedByMoney",
-    "amountOfDiscount",
-    "usedDiscount"
-})
 public class Purchase {
 
-    @JsonProperty("purchaseId")
+    @SerializedName("purchaseId")
+    @Expose
     private Integer purchaseId;
-    @JsonProperty("timestamp")
+    @SerializedName("timestamp")
+    @Expose
     private Integer timestamp;
-    @JsonProperty("amount")
+    @SerializedName("amount")
+    @Expose
     private Double amount;
-    @JsonProperty("score")
+    @SerializedName("score")
+    @Expose
     private Integer score;
-    @JsonProperty("earnScore")
+    @SerializedName("earnScore")
+    @Expose
     private Integer earnScore;
-    @JsonProperty("purchaseType")
+    @SerializedName("purchaseType")
+    @Expose
     private String purchaseType;
-    @JsonProperty("purchaseStatus")
+    @SerializedName("purchaseStatus")
+    @Expose
     private String purchaseStatus;
-    @JsonProperty("present")
+    @SerializedName("present")
+    @Expose
     private Present present;
-    @JsonProperty("amountPayedByScore")
+    @SerializedName("amountPayedByScore")
+    @Expose
     private Object amountPayedByScore;
-    @JsonProperty("amountPayedByMoney")
+    @SerializedName("amountPayedByMoney")
+    @Expose
     private Object amountPayedByMoney;
-    @JsonProperty("amountOfDiscount")
+    @SerializedName("amountOfDiscount")
+    @Expose
     private Double amountOfDiscount;
-    @JsonProperty("usedDiscount")
+    @SerializedName("usedDiscount")
+    @Expose
     private Object usedDiscount;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
+     * No args constructor for use in serialization
+     *
+     */
+    public Purchase() {
+    }
+
+    /**
+     *
+     * @param amount
+     * @param timestamp
+     * @param present
+     * @param amountPayedByMoney
+     * @param earnScore
+     * @param purchaseType
+     * @param score
+     * @param amountOfDiscount
+     * @param purchaseId
+     * @param usedDiscount
+     * @param purchaseStatus
+     * @param amountPayedByScore
+     */
+    public Purchase(Integer purchaseId, Integer timestamp, Double amount, Integer score, Integer earnScore, String purchaseType, String purchaseStatus, Present present, Object amountPayedByScore, Object amountPayedByMoney, Double amountOfDiscount, Object usedDiscount) {
+        this.purchaseId = purchaseId;
+        this.timestamp = timestamp;
+        this.amount = amount;
+        this.score = score;
+        this.earnScore = earnScore;
+        this.purchaseType = purchaseType;
+        this.purchaseStatus = purchaseStatus;
+        this.present = present;
+        this.amountPayedByScore = amountPayedByScore;
+        this.amountPayedByMoney = amountPayedByMoney;
+        this.amountOfDiscount = amountOfDiscount;
+        this.usedDiscount = usedDiscount;
+    }
+
+    /**
+     *
      * @return
      *     The purchaseId
      */
-    @JsonProperty("purchaseId")
     public Integer getPurchaseId() {
         return purchaseId;
     }
 
     /**
-     * 
+     *
      * @param purchaseId
      *     The purchaseId
      */
-    @JsonProperty("purchaseId")
     public void setPurchaseId(Integer purchaseId) {
         this.purchaseId = purchaseId;
     }
 
+    public Purchase withPurchaseId(Integer purchaseId) {
+        this.purchaseId = purchaseId;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The timestamp
      */
-    @JsonProperty("timestamp")
     public Integer getTimestamp() {
         return timestamp;
     }
 
     /**
-     * 
+     *
      * @param timestamp
      *     The timestamp
      */
-    @JsonProperty("timestamp")
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
     }
 
+    public Purchase withTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The amount
      */
-    @JsonProperty("amount")
     public Double getAmount() {
         return amount;
     }
 
     /**
-     * 
+     *
      * @param amount
      *     The amount
      */
-    @JsonProperty("amount")
     public void setAmount(Double amount) {
         this.amount = amount;
     }
 
+    public Purchase withAmount(Double amount) {
+        this.amount = amount;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The score
      */
-    @JsonProperty("score")
     public Integer getScore() {
         return score;
     }
 
     /**
-     * 
+     *
      * @param score
      *     The score
      */
-    @JsonProperty("score")
     public void setScore(Integer score) {
         this.score = score;
     }
 
+    public Purchase withScore(Integer score) {
+        this.score = score;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The earnScore
      */
-    @JsonProperty("earnScore")
     public Integer getEarnScore() {
         return earnScore;
     }
 
     /**
-     * 
+     *
      * @param earnScore
      *     The earnScore
      */
-    @JsonProperty("earnScore")
     public void setEarnScore(Integer earnScore) {
         this.earnScore = earnScore;
     }
 
+    public Purchase withEarnScore(Integer earnScore) {
+        this.earnScore = earnScore;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The purchaseType
      */
-    @JsonProperty("purchaseType")
     public String getPurchaseType() {
         return purchaseType;
     }
 
     /**
-     * 
+     *
      * @param purchaseType
      *     The purchaseType
      */
-    @JsonProperty("purchaseType")
     public void setPurchaseType(String purchaseType) {
         this.purchaseType = purchaseType;
     }
 
+    public Purchase withPurchaseType(String purchaseType) {
+        this.purchaseType = purchaseType;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The purchaseStatus
      */
-    @JsonProperty("purchaseStatus")
     public String getPurchaseStatus() {
         return purchaseStatus;
     }
 
     /**
-     * 
+     *
      * @param purchaseStatus
      *     The purchaseStatus
      */
-    @JsonProperty("purchaseStatus")
     public void setPurchaseStatus(String purchaseStatus) {
         this.purchaseStatus = purchaseStatus;
     }
 
+    public Purchase withPurchaseStatus(String purchaseStatus) {
+        this.purchaseStatus = purchaseStatus;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The present
      */
-    @JsonProperty("present")
     public Present getPresent() {
         return present;
     }
 
     /**
-     * 
+     *
      * @param present
      *     The present
      */
-    @JsonProperty("present")
     public void setPresent(Present present) {
         this.present = present;
     }
 
+    public Purchase withPresent(Present present) {
+        this.present = present;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The amountPayedByScore
      */
-    @JsonProperty("amountPayedByScore")
     public Object getAmountPayedByScore() {
         return amountPayedByScore;
     }
 
     /**
-     * 
+     *
      * @param amountPayedByScore
      *     The amountPayedByScore
      */
-    @JsonProperty("amountPayedByScore")
     public void setAmountPayedByScore(Object amountPayedByScore) {
         this.amountPayedByScore = amountPayedByScore;
     }
 
+    public Purchase withAmountPayedByScore(Object amountPayedByScore) {
+        this.amountPayedByScore = amountPayedByScore;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The amountPayedByMoney
      */
-    @JsonProperty("amountPayedByMoney")
     public Object getAmountPayedByMoney() {
         return amountPayedByMoney;
     }
 
     /**
-     * 
+     *
      * @param amountPayedByMoney
      *     The amountPayedByMoney
      */
-    @JsonProperty("amountPayedByMoney")
     public void setAmountPayedByMoney(Object amountPayedByMoney) {
         this.amountPayedByMoney = amountPayedByMoney;
     }
 
+    public Purchase withAmountPayedByMoney(Object amountPayedByMoney) {
+        this.amountPayedByMoney = amountPayedByMoney;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The amountOfDiscount
      */
-    @JsonProperty("amountOfDiscount")
     public Double getAmountOfDiscount() {
         return amountOfDiscount;
     }
 
     /**
-     * 
+     *
      * @param amountOfDiscount
      *     The amountOfDiscount
      */
-    @JsonProperty("amountOfDiscount")
     public void setAmountOfDiscount(Double amountOfDiscount) {
         this.amountOfDiscount = amountOfDiscount;
     }
 
+    public Purchase withAmountOfDiscount(Double amountOfDiscount) {
+        this.amountOfDiscount = amountOfDiscount;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The usedDiscount
      */
-    @JsonProperty("usedDiscount")
     public Object getUsedDiscount() {
         return usedDiscount;
     }
 
     /**
-     * 
+     *
      * @param usedDiscount
      *     The usedDiscount
      */
-    @JsonProperty("usedDiscount")
     public void setUsedDiscount(Object usedDiscount) {
         this.usedDiscount = usedDiscount;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public Purchase withUsedDiscount(Object usedDiscount) {
+        this.usedDiscount = usedDiscount;
+        return this;
     }
 
 }
