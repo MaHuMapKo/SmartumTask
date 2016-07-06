@@ -1,238 +1,275 @@
 
 package com.mahumapko.smartumtask.POJO.ClientCard;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "id",
-    "city",
-    "address",
-    "url",
-    "email",
-    "phone",
-    "workSchedule",
-    "longitude",
-    "latitude"
-})
 public class Shop {
 
-    @JsonProperty("id")
+    @SerializedName("id")
+    @Expose
     private Integer id;
-    @JsonProperty("city")
+    @SerializedName("city")
+    @Expose
     private City city;
-    @JsonProperty("address")
+    @SerializedName("address")
+    @Expose
     private String address;
-    @JsonProperty("url")
+    @SerializedName("url")
+    @Expose
     private String url;
-    @JsonProperty("email")
+    @SerializedName("email")
+    @Expose
     private String email;
-    @JsonProperty("phone")
+    @SerializedName("phone")
+    @Expose
     private String phone;
-    @JsonProperty("workSchedule")
+    @SerializedName("workSchedule")
+    @Expose
     private String workSchedule;
-    @JsonProperty("longitude")
+    @SerializedName("longitude")
+    @Expose
     private String longitude;
-    @JsonProperty("latitude")
+    @SerializedName("latitude")
+    @Expose
     private String latitude;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
+     * No args constructor for use in serialization
+     *
+     */
+    public Shop() {
+    }
+
+    /**
+     *
+     * @param id
+     * @param phone
+     * @param workSchedule
+     * @param email
+     * @param address
+     * @param longitude
+     * @param latitude
+     * @param url
+     * @param city
+     */
+    public Shop(Integer id, City city, String address, String url, String email, String phone, String workSchedule, String longitude, String latitude) {
+        this.id = id;
+        this.city = city;
+        this.address = address;
+        this.url = url;
+        this.email = email;
+        this.phone = phone;
+        this.workSchedule = workSchedule;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
+    /**
+     *
      * @return
      *     The id
      */
-    @JsonProperty("id")
     public Integer getId() {
         return id;
     }
 
     /**
-     * 
+     *
      * @param id
      *     The id
      */
-    @JsonProperty("id")
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public Shop withId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The city
      */
-    @JsonProperty("city")
     public City getCity() {
         return city;
     }
 
     /**
-     * 
+     *
      * @param city
      *     The city
      */
-    @JsonProperty("city")
     public void setCity(City city) {
         this.city = city;
     }
 
+    public Shop withCity(City city) {
+        this.city = city;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The address
      */
-    @JsonProperty("address")
     public String getAddress() {
         return address;
     }
 
     /**
-     * 
+     *
      * @param address
      *     The address
      */
-    @JsonProperty("address")
     public void setAddress(String address) {
         this.address = address;
     }
 
+    public Shop withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The url
      */
-    @JsonProperty("url")
     public String getUrl() {
         return url;
     }
 
     /**
-     * 
+     *
      * @param url
      *     The url
      */
-    @JsonProperty("url")
     public void setUrl(String url) {
         this.url = url;
     }
 
+    public Shop withUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The email
      */
-    @JsonProperty("email")
     public String getEmail() {
         return email;
     }
 
     /**
-     * 
+     *
      * @param email
      *     The email
      */
-    @JsonProperty("email")
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public Shop withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The phone
      */
-    @JsonProperty("phone")
     public String getPhone() {
         return phone;
     }
 
     /**
-     * 
+     *
      * @param phone
      *     The phone
      */
-    @JsonProperty("phone")
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    public Shop withPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The workSchedule
      */
-    @JsonProperty("workSchedule")
     public String getWorkSchedule() {
         return workSchedule;
     }
 
     /**
-     * 
+     *
      * @param workSchedule
      *     The workSchedule
      */
-    @JsonProperty("workSchedule")
     public void setWorkSchedule(String workSchedule) {
         this.workSchedule = workSchedule;
     }
 
+    public Shop withWorkSchedule(String workSchedule) {
+        this.workSchedule = workSchedule;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The longitude
      */
-    @JsonProperty("longitude")
     public String getLongitude() {
         return longitude;
     }
 
     /**
-     * 
+     *
      * @param longitude
      *     The longitude
      */
-    @JsonProperty("longitude")
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
+    public Shop withLongitude(String longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The latitude
      */
-    @JsonProperty("latitude")
     public String getLatitude() {
         return latitude;
     }
 
     /**
-     * 
+     *
      * @param latitude
      *     The latitude
      */
-    @JsonProperty("latitude")
     public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public Shop withLatitude(String latitude) {
+        this.latitude = latitude;
+        return this;
     }
 
 }

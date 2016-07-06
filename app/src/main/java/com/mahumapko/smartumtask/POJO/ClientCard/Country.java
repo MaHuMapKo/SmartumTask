@@ -1,100 +1,107 @@
 
 package com.mahumapko.smartumtask.POJO.ClientCard;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "id",
-    "name",
-    "cities"
-})
 public class Country {
 
-    @JsonProperty("id")
+    @SerializedName("id")
+    @Expose
     private Integer id;
-    @JsonProperty("name")
+    @SerializedName("name")
+    @Expose
     private String name;
-    @JsonProperty("cities")
+    @SerializedName("cities")
+    @Expose
     private Object cities;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
+     * No args constructor for use in serialization
+     *
+     */
+    public Country() {
+    }
+
+    /**
+     *
+     * @param id
+     * @param cities
+     * @param name
+     */
+    public Country(Integer id, String name, Object cities) {
+        this.id = id;
+        this.name = name;
+        this.cities = cities;
+    }
+
+    /**
+     *
      * @return
      *     The id
      */
-    @JsonProperty("id")
     public Integer getId() {
         return id;
     }
 
     /**
-     * 
+     *
      * @param id
      *     The id
      */
-    @JsonProperty("id")
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public Country withId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The name
      */
-    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
     /**
-     * 
+     *
      * @param name
      *     The name
      */
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
+    public Country withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The cities
      */
-    @JsonProperty("cities")
     public Object getCities() {
         return cities;
     }
 
     /**
-     * 
+     *
      * @param cities
      *     The cities
      */
-    @JsonProperty("cities")
     public void setCities(Object cities) {
         this.cities = cities;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public Country withCities(Object cities) {
+        this.cities = cities;
+        return this;
     }
 
 }

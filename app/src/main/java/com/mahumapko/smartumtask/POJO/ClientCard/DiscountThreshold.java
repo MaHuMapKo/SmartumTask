@@ -1,77 +1,79 @@
 
 package com.mahumapko.smartumtask.POJO.ClientCard;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "thresholdSpentAmount",
-    "discount"
-})
 public class DiscountThreshold {
 
-    @JsonProperty("thresholdSpentAmount")
+    @SerializedName("thresholdSpentAmount")
+    @Expose
     private Double thresholdSpentAmount;
-    @JsonProperty("discount")
+    @SerializedName("discount")
+    @Expose
     private Double discount;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
+     * No args constructor for use in serialization
+     *
+     */
+    public DiscountThreshold() {
+    }
+
+    /**
+     *
+     * @param thresholdSpentAmount
+     * @param discount
+     */
+    public DiscountThreshold(Double thresholdSpentAmount, Double discount) {
+        this.thresholdSpentAmount = thresholdSpentAmount;
+        this.discount = discount;
+    }
+
+    /**
+     *
      * @return
      *     The thresholdSpentAmount
      */
-    @JsonProperty("thresholdSpentAmount")
     public Double getThresholdSpentAmount() {
         return thresholdSpentAmount;
     }
 
     /**
-     * 
+     *
      * @param thresholdSpentAmount
      *     The thresholdSpentAmount
      */
-    @JsonProperty("thresholdSpentAmount")
     public void setThresholdSpentAmount(Double thresholdSpentAmount) {
         this.thresholdSpentAmount = thresholdSpentAmount;
     }
 
+    public DiscountThreshold withThresholdSpentAmount(Double thresholdSpentAmount) {
+        this.thresholdSpentAmount = thresholdSpentAmount;
+        return this;
+    }
+
     /**
-     * 
+     *
      * @return
      *     The discount
      */
-    @JsonProperty("discount")
     public Double getDiscount() {
         return discount;
     }
 
     /**
-     * 
+     *
      * @param discount
      *     The discount
      */
-    @JsonProperty("discount")
     public void setDiscount(Double discount) {
         this.discount = discount;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public DiscountThreshold withDiscount(Double discount) {
+        this.discount = discount;
+        return this;
     }
 
 }
