@@ -6,8 +6,8 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/cardImage"
         android:layout_gravity="center"
         android:src="@mipmap/ic_launcher" />
@@ -20,8 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/discount"
-            android:text="Ваша скидка: 10% " />
+            android:id="@+id/discount" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,15 +30,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/score"
-            android:text=" Баллов : 578" />
+            android:id="@+id/score" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/next_discount"
-        android:text="Осталось до 20% - 25 000 руб." />
+        android:id="@+id/next_discount" />
 
 
     <ProgressBar
