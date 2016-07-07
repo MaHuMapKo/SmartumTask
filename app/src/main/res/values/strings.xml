@@ -21,4 +21,6 @@
     <string name="phoneIcon">ic_call_black_24dp</string>
     <string name="workSheduleIcon">ic_access_time_black_24dp</string>
     <string name="addressIcon">ic_subdirectory_arrow_right_black_24dp</string>
+
+    <string name="activate">АКТИВИРОВАТЬ КАРТУ</string>
 </resources>
