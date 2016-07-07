@@ -38,6 +38,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 
 public class MainActivity extends AppCompatActivity {
+    ViewPagerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AboutUsFragment(), getString(R.string.aboutUsTitle));
         adapter.addFragment(new PresentsFragment(), getString(R.string.presentsTitle));
         adapter.addFragment(new MyPresentsFragment(), getString(R.string.myPresentsTitle));
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         putDataInToolbar(name, discount, scores, nextDiscount, untilNextDiscount);
 
         List<Shop> shops = cardDto.getShops();
+        sentShopsListToFragment(shops);
 
         ImageView view = (ImageView) findViewById(R.id.cardImage);
         checkForImage(imagePath, view);
@@ -124,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
         nextDiscountView.setText(formattedDiscount);
 
         getSupportActionBar().setTitle(name);
+    }
+
+    private void sentShopsListToFragment(List<Shop> list) {
+        ((AboutUsFragment) adapter.getItem(0)).setListAndConvert(list);
     }
 
     public void checkForImage(String imagePath, ImageView view) {
