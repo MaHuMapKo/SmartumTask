@@ -63,8 +63,7 @@ public class AboutUsFragment extends Fragment{
 
             childsList = checkForMultiplePhones(shop.getPhone(), childsList, imagesList);
             childsList.add(shop.getWorkSchedule());
-            childsList.add(getString(R.string.lookAtMap));
-            imagesList.add(getString(R.string.mapIcon));
+            imagesList.add(getString(R.string.workSheduleIcon));
 
             childsMap.put(titles.get(i), childsList);
             imagesMap.put(titles.get(i), imagesList);
