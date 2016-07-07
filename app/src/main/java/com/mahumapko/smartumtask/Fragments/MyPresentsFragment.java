@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -34,6 +35,13 @@ public class MyPresentsFragment extends Fragment {
         View root = (View) inflater.inflate(R.layout.my_presents_fragment, container, false);
 
         ListView list = (ListView) root.findViewById(R.id.my_presents_list);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                DevelopDialog dialog = new DevelopDialog();
+                dialog.show(getFragmentManager(), "DialogFragment");
+            }
+        });
 
         Purchases purchases = getDataFromJson();
         createAdapter(purchases, list);

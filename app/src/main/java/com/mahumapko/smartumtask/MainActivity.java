@@ -12,7 +12,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mahumapko.smartumtask.Adapters.ViewPagerAdapter;
 import com.mahumapko.smartumtask.Fragments.AboutUsFragment;
+import com.mahumapko.smartumtask.Fragments.DevelopDialog;
 import com.mahumapko.smartumtask.Fragments.MyPresentsFragment;
 import com.mahumapko.smartumtask.Fragments.PresentsFragment;
 import com.mahumapko.smartumtask.POJO.ClientCard.Card;
@@ -49,8 +53,33 @@ public class MainActivity extends AppCompatActivity {
         if (!isNetworkConnected()) {
             Toast.makeText(this, getString(R.string.noInternet), Toast.LENGTH_LONG).show();
         }
+
+        setClickers();
+
+
+
         setupTabLayout();
         convertCardJson();
+    }
+
+    private void setClickers() {
+        Button button = (Button) findViewById(R.id.showCode);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DevelopDialog dialog = new DevelopDialog();
+                dialog.show(getSupportFragmentManager(), "DialogFragment");
+            }
+        });
+
+        ProgressBar bar = (ProgressBar) findViewById(R.id.discount_progress);
+        bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DevelopDialog dialog = new DevelopDialog();
+                dialog.show(getSupportFragmentManager(), "DialogFragment");
+            }
+        });
     }
 
     private void setupTabLayout() {

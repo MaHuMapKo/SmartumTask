@@ -30,6 +30,14 @@ public class AboutUsFragment extends Fragment{
         View root = (View) inflater.inflate(R.layout.about_us_fragment, container, false);
 
         expandable = (ExpandableListView) root.findViewById(R.id.expandableList);
+        expandable.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                DevelopDialog dialog = new DevelopDialog();
+                dialog.show(getFragmentManager(), "DialogFragment");
+                return false;
+            }
+        });
 
         convertDataToLists();
         return root;

@@ -24,4 +24,7 @@
 
     <string name="activate">АКТИВИРОВАТЬ КАРТУ</string>
     <string name="noInternet">Ошибка загрузки. Отсутствует интернет соединение</string>
+
+    <string name="onDevelopment">В стадии разработки.</string>
+    <string name="cancel">Закрыть</string>
 </resources>
