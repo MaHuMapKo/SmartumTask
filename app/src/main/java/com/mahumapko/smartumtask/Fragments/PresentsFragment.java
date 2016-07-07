@@ -51,7 +51,6 @@ public class PresentsFragment extends Fragment {
             is.close();
 
             json = new String(buffer, Charset.forName("UTF-8"));
-            Log.e("AAAA", json);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
