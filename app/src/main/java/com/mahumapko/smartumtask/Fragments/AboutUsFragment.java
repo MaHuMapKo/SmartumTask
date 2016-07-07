@@ -2,6 +2,7 @@ package com.mahumapko.smartumtask.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +34,6 @@ public class AboutUsFragment extends Fragment{
         convertDataToLists();
         return root;
     }
-
-
 
     public void setListAndConvert(List<Shop> list) {
         this.list = list;
@@ -70,7 +69,16 @@ public class AboutUsFragment extends Fragment{
         }
 
         AboutUsAdapter adapter = new AboutUsAdapter(getActivity(), titles, childsMap, imagesMap);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        expandable.setIndicatorBoundsRelative(width-getPixelFromDips(40), width - getPixelFromDips(20));
         expandable.setAdapter(adapter);
+    }
+
+    private int getPixelFromDips(float pixels) {
+        final float scale = getResources().getDisplayMetrics().density;
+        return (int) (pixels * scale + 0.5f);
     }
 
     private List<String> checkForMultiplePhones(String phone, List<String> childsList,
