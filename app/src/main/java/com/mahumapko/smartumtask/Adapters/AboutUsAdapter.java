@@ -83,6 +83,7 @@ public class AboutUsAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean b, View view, ViewGroup viewGroup) {
         final String childText = (String) getChild(groupPosition, childPosition);
+        final String childImage = images.get(list.get(groupPosition)).get(childPosition);
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater)
@@ -91,7 +92,9 @@ public class AboutUsAdapter extends BaseExpandableListAdapter {
         }
 
         ImageView image = (ImageView) view.findViewById(R.id.icon);
-        image.setImageDrawable(context.getDrawable(R.mipmap.ic_launcher));
+        int imageResource = context.getResources().getIdentifier(childImage, "mipmap",
+                context.getPackageName());
+        image.setImageResource(imageResource);
 
         TextView text = (TextView) view.findViewById(R.id.info);
         text.setText(childText);

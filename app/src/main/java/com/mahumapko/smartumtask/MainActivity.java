@@ -112,10 +112,10 @@ public class MainActivity extends AppCompatActivity {
     private void putDataInToolbar(String name, Double discount, Integer scores, Double nextDiscount,
                                   Double untilNextDiscount) {
         TextView discountView = (TextView) findViewById(R.id.discount);
-        discountView.setText(String.format("%s %s", getString(R.string.discount), discount));
+        discountView.setText(String.format(" %s ", discount));
 
         TextView scoresView = (TextView) findViewById(R.id.score);
-        scoresView.setText(String.format(" %s %s", getString(R.string.score), scores));
+        scoresView.setText(String.format(" %s", scores));
 
         TextView nextDiscountView = (TextView) findViewById(R.id.next_discount);
         String formattedDiscount = String.format("%s %s", getString(R.string.left_before),

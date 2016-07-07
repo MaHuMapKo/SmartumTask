@@ -8,18 +8,19 @@
     <string name="scoreCount">баллов.</string>
     <string name="presentLeft">Осталось</string>
 <!--toolbar views-->
-    <string name="discount">Ваша скидка:</string>
-    <string name="score">Баллов:</string>
+    <string name="discount">Ваша скидка: </string>
+    <string name="score">Баллов: </string>
     <string name="left_before">Осталось до</string>
     <string name="rub">руб.</string>
 
     <string name="lookAtMap">Посмотреть на карте.</string>
 
     <!--Icons names for expandable-->
-    <string name="addressIcon">address.png</string>
-    <string name="urlIcon">url.png</string>
-    <string name="emailIcon">email.png</string>
-    <string name="phoneIcon">phone.png</string>
-    <string name="workSheduleIcon">workshedule.png</string>
-    <string name="mapIcon">map.png</string>
+    <string name="urlIcon">ic_public_black_24dp</string>
+    <string name="emailIcon">ic_mail_black_24dp</string>
+    <string name="phoneIcon">ic_call_black_24dp</string>
+    <string name="workSheduleIcon">ic_access_time_black_24dp</string>
+    <string name="addressIcon">ic_subdirectory_arrow_right_black_24dp</string>
+
+    <string name="activate">АКТИВИРОВАТЬ КАРТУ</string>
 </resources>

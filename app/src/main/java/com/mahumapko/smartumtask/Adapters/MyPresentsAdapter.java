@@ -31,7 +31,7 @@ public class MyPresentsAdapter extends ArrayAdapter {
 
     public View getCustomView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View root = inflater.inflate(R.layout.presents_item, parent, false);
+        View root = inflater.inflate(R.layout.my_presents_item, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(root);
         ((MainActivity)context).checkForImage(images.get(position), viewHolder.image);

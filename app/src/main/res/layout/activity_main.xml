@@ -1,55 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context="com.mahumapko.smartumtask.MainActivity">
+    tools:context="com.mahumapko.smartumtask.MainActivity" >
 
-    <android.support.design.widget.AppBarLayout
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/activate"
+        android:textColor="@color/white"
+        android:background="@color/green"
+        android:id="@+id/showCode" />
 
-        <android.support.v7.widget.Toolbar android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/toolbar"
-            app:layout_scrollFlags="scroll|enterAlways" />
-
-        <include layout="@layout/toolbar_layout" />
-
-        <android.support.design.widget.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            android:layout_gravity="bottom"
-            android:id="@+id/tabs"/>
-
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/viewpager">
-
-    </android.support.v4.view.ViewPager>
-
-    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_above="@id/showCode"
+        >
 
-        <Button
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:text="DFDFDF"
-            android:id="@+id/showCode" />
+            android:background="@color/white"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            >
 
-    </RelativeLayout>
+            <android.support.v7.widget.Toolbar android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/toolbar"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
-</android.support.design.widget.CoordinatorLayout>
+            <include layout="@layout/toolbar_layout" />
+
+            <android.support.design.widget.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="center"
+                app:tabMode="fixed"
+                style="@style/CustomTabLayout"
+                android:id="@+id/tabs"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/viewpager">
+
+        </android.support.v4.view.ViewPager>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
