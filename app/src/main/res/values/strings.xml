@@ -12,4 +12,14 @@
     <string name="score">Баллов:</string>
     <string name="left_before">Осталось до</string>
     <string name="rub">руб.</string>
+
+    <string name="lookAtMap">Посмотреть на карте.</string>
+
+    <!--Icons names for expandable-->
+    <string name="addressIcon">address.png</string>
+    <string name="urlIcon">url.png</string>
+    <string name="emailIcon">email.png</string>
+    <string name="phoneIcon">phone.png</string>
+    <string name="workSheduleIcon">workshedule.png</string>
+    <string name="mapIcon">map.png</string>
 </resources>
