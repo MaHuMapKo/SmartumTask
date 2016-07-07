@@ -169,8 +169,10 @@ public class MainActivity extends AppCompatActivity {
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
 
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 10;
                 InputStream input = urlConnection.getInputStream();
-                bitmap = BitmapFactory.decodeStream(input);
+                bitmap = BitmapFactory.decodeStream(input, null, options);
                 return null;
             } catch (IOException e) {
                 e.printStackTrace();
