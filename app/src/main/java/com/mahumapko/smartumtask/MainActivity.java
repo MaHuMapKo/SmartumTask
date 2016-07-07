@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (!isNetworkConnected()) {
+            Toast.makeText(this, getString(R.string.noInternet), Toast.LENGTH_LONG).show();
+        }
         setupTabLayout();
         convertCardJson();
     }
@@ -139,14 +144,17 @@ public class MainActivity extends AppCompatActivity {
 
             File file = new File(getFilesDir(), fileName);
             if (!file.exists()) {
-                int samplesize;
-                if (view.getId()==R.id.cardImage)
-                    samplesize = 2;
-                else
-                    samplesize = 8;
-                DownloadImageTask downloadImageTask = new DownloadImageTask(this, imagePath, fileName,
-                        view, samplesize);
-                downloadImageTask.execute();
+                if (isNetworkConnected()) {
+                    int samplesize;
+                    if (view.getId() == R.id.cardImage)
+                        samplesize = 2;
+                    else
+                        samplesize = 8;
+                    DownloadImageTask downloadImageTask = new DownloadImageTask(this, imagePath, fileName,
+                            view, samplesize);
+                    downloadImageTask.execute();
+                } else
+                    view.setImageDrawable(getDrawable(R.mipmap.ic_launcher));
             } else {
                 Uri uri = Uri.fromFile(file);
                 view.setImageURI(uri);
@@ -154,6 +162,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             view.setImageDrawable(getDrawable(R.mipmap.ic_launcher));
         }
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
     }
 
     public static class DownloadImageTask extends AsyncTask<Void, Void, Void> {

@@ -23,4 +23,5 @@
     <string name="addressIcon">ic_subdirectory_arrow_right_black_24dp</string>
 
     <string name="activate">АКТИВИРОВАТЬ КАРТУ</string>
+    <string name="noInternet">Ошибка загрузки. Отсутствует интернет соединение</string>
 </resources>
