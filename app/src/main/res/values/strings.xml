@@ -8,8 +8,8 @@
     <string name="scoreCount">баллов.</string>
     <string name="presentLeft">Осталось</string>
 <!--toolbar views-->
-    <string name="discount">Ваша скидка:</string>
-    <string name="score">Баллов:</string>
+    <string name="discount">Ваша скидка: </string>
+    <string name="score">Баллов: </string>
     <string name="left_before">Осталось до</string>
     <string name="rub">руб.</string>
 
