@@ -6,7 +6,7 @@
     <string name="myPresentsTitle">Мои подарки</string>
 
     <string name="scoreCount">баллов.</string>
-    <string name="scoreLeft">Осталось</string>
+    <string name="presentLeft">Осталось</string>
 <!--toolbar views-->
     <string name="discount">Ваша скидка:</string>
     <string name="score">Баллов:</string>
