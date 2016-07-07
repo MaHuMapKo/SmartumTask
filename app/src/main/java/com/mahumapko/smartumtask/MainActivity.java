@@ -133,17 +133,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkForImage(String imagePath, ImageView view) {
-        String[] splittedPath = imagePath.split("/");
-        String fileName = splittedPath[splittedPath.length-1];
+        if (imagePath!=null) {
+            String[] splittedPath = imagePath.split("/");
+            String fileName = splittedPath[splittedPath.length - 1];
 
-        File file = new File(getFilesDir(), fileName);
-        if (!file.exists()) {
-            DownloadImageTask downloadImageTask = new DownloadImageTask(this, imagePath, fileName,
-                    view);
-            downloadImageTask.execute();
+            File file = new File(getFilesDir(), fileName);
+            if (!file.exists()) {
+                int samplesize;
+                if (view.getId()==R.id.cardImage)
+                    samplesize = 2;
+                else
+                    samplesize = 8;
+                DownloadImageTask downloadImageTask = new DownloadImageTask(this, imagePath, fileName,
+                        view, samplesize);
+                downloadImageTask.execute();
+            } else {
+                Uri uri = Uri.fromFile(file);
+                view.setImageURI(uri);
+            }
         } else {
-            Uri uri = Uri.fromFile(file);
-            view.setImageURI(uri);
+            view.setImageDrawable(getDrawable(R.mipmap.ic_launcher));
         }
     }
 
@@ -152,12 +161,15 @@ public class MainActivity extends AppCompatActivity {
         String imagePath, fileName;
         Bitmap bitmap;
         ImageView view;
+        int sampleSize;
 
-        public DownloadImageTask(Context context, String imagePath, String fileName, ImageView view) {
+        public DownloadImageTask(Context context, String imagePath, String fileName, ImageView view,
+                                 int sampleSize) {
             this.context = context;
             this.imagePath = imagePath;
             this.fileName = fileName;
             this.view = view;
+            this.sampleSize = sampleSize;
         }
 
         @Override
@@ -170,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 urlConnection.connect();
 
                 BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inSampleSize = 10;
+                options.inSampleSize = sampleSize;
                 InputStream input = urlConnection.getInputStream();
                 bitmap = BitmapFactory.decodeStream(input, null, options);
                 return null;
