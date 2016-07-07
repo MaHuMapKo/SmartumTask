@@ -1,4 +1,3 @@
-
 package com.mahumapko.smartumtask.POJO.MyPresents;
 
 import com.google.gson.annotations.Expose;
@@ -9,19 +8,19 @@ public class Purchase {
 
     @SerializedName("purchaseId")
     @Expose
-    private Integer purchaseId;
+    private Long purchaseId;
     @SerializedName("timestamp")
     @Expose
-    private Integer timestamp;
+    private Long timestamp;
     @SerializedName("amount")
     @Expose
     private Double amount;
     @SerializedName("score")
     @Expose
-    private Integer score;
+    private Long score;
     @SerializedName("earnScore")
     @Expose
-    private Integer earnScore;
+    private Long earnScore;
     @SerializedName("purchaseType")
     @Expose
     private String purchaseType;
@@ -66,7 +65,7 @@ public class Purchase {
      * @param purchaseStatus
      * @param amountPayedByScore
      */
-    public Purchase(Integer purchaseId, Integer timestamp, Double amount, Integer score, Integer earnScore, String purchaseType, String purchaseStatus, Present present, Object amountPayedByScore, Object amountPayedByMoney, Double amountOfDiscount, Object usedDiscount) {
+    public Purchase(Long purchaseId, Long timestamp, Double amount, Long score, Long earnScore, String purchaseType, String purchaseStatus, Present present, Object amountPayedByScore, Object amountPayedByMoney, Double amountOfDiscount, Object usedDiscount) {
         this.purchaseId = purchaseId;
         this.timestamp = timestamp;
         this.amount = amount;
@@ -84,22 +83,22 @@ public class Purchase {
     /**
      *
      * @return
-     *     The purchaseId
+     * The purchaseId
      */
-    public Integer getPurchaseId() {
+    public Long getPurchaseId() {
         return purchaseId;
     }
 
     /**
      *
      * @param purchaseId
-     *     The purchaseId
+     * The purchaseId
      */
-    public void setPurchaseId(Integer purchaseId) {
+    public void setPurchaseId(Long purchaseId) {
         this.purchaseId = purchaseId;
     }
 
-    public Purchase withPurchaseId(Integer purchaseId) {
+    public Purchase withPurchaseId(Long purchaseId) {
         this.purchaseId = purchaseId;
         return this;
     }
@@ -107,22 +106,22 @@ public class Purchase {
     /**
      *
      * @return
-     *     The timestamp
+     * The timestamp
      */
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
     /**
      *
      * @param timestamp
-     *     The timestamp
+     * The timestamp
      */
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
-    public Purchase withTimestamp(Integer timestamp) {
+    public Purchase withTimestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
     }
@@ -130,7 +129,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The amount
+     * The amount
      */
     public Double getAmount() {
         return amount;
@@ -139,7 +138,7 @@ public class Purchase {
     /**
      *
      * @param amount
-     *     The amount
+     * The amount
      */
     public void setAmount(Double amount) {
         this.amount = amount;
@@ -153,22 +152,22 @@ public class Purchase {
     /**
      *
      * @return
-     *     The score
+     * The score
      */
-    public Integer getScore() {
+    public Long getScore() {
         return score;
     }
 
     /**
      *
      * @param score
-     *     The score
+     * The score
      */
-    public void setScore(Integer score) {
+    public void setScore(Long score) {
         this.score = score;
     }
 
-    public Purchase withScore(Integer score) {
+    public Purchase withScore(Long score) {
         this.score = score;
         return this;
     }
@@ -176,22 +175,22 @@ public class Purchase {
     /**
      *
      * @return
-     *     The earnScore
+     * The earnScore
      */
-    public Integer getEarnScore() {
+    public Long getEarnScore() {
         return earnScore;
     }
 
     /**
      *
      * @param earnScore
-     *     The earnScore
+     * The earnScore
      */
-    public void setEarnScore(Integer earnScore) {
+    public void setEarnScore(Long earnScore) {
         this.earnScore = earnScore;
     }
 
-    public Purchase withEarnScore(Integer earnScore) {
+    public Purchase withEarnScore(Long earnScore) {
         this.earnScore = earnScore;
         return this;
     }
@@ -199,7 +198,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The purchaseType
+     * The purchaseType
      */
     public String getPurchaseType() {
         return purchaseType;
@@ -208,7 +207,7 @@ public class Purchase {
     /**
      *
      * @param purchaseType
-     *     The purchaseType
+     * The purchaseType
      */
     public void setPurchaseType(String purchaseType) {
         this.purchaseType = purchaseType;
@@ -222,7 +221,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The purchaseStatus
+     * The purchaseStatus
      */
     public String getPurchaseStatus() {
         return purchaseStatus;
@@ -231,7 +230,7 @@ public class Purchase {
     /**
      *
      * @param purchaseStatus
-     *     The purchaseStatus
+     * The purchaseStatus
      */
     public void setPurchaseStatus(String purchaseStatus) {
         this.purchaseStatus = purchaseStatus;
@@ -245,7 +244,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The present
+     * The present
      */
     public Present getPresent() {
         return present;
@@ -254,7 +253,7 @@ public class Purchase {
     /**
      *
      * @param present
-     *     The present
+     * The present
      */
     public void setPresent(Present present) {
         this.present = present;
@@ -268,7 +267,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The amountPayedByScore
+     * The amountPayedByScore
      */
     public Object getAmountPayedByScore() {
         return amountPayedByScore;
@@ -277,7 +276,7 @@ public class Purchase {
     /**
      *
      * @param amountPayedByScore
-     *     The amountPayedByScore
+     * The amountPayedByScore
      */
     public void setAmountPayedByScore(Object amountPayedByScore) {
         this.amountPayedByScore = amountPayedByScore;
@@ -291,7 +290,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The amountPayedByMoney
+     * The amountPayedByMoney
      */
     public Object getAmountPayedByMoney() {
         return amountPayedByMoney;
@@ -300,7 +299,7 @@ public class Purchase {
     /**
      *
      * @param amountPayedByMoney
-     *     The amountPayedByMoney
+     * The amountPayedByMoney
      */
     public void setAmountPayedByMoney(Object amountPayedByMoney) {
         this.amountPayedByMoney = amountPayedByMoney;
@@ -314,7 +313,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The amountOfDiscount
+     * The amountOfDiscount
      */
     public Double getAmountOfDiscount() {
         return amountOfDiscount;
@@ -323,7 +322,7 @@ public class Purchase {
     /**
      *
      * @param amountOfDiscount
-     *     The amountOfDiscount
+     * The amountOfDiscount
      */
     public void setAmountOfDiscount(Double amountOfDiscount) {
         this.amountOfDiscount = amountOfDiscount;
@@ -337,7 +336,7 @@ public class Purchase {
     /**
      *
      * @return
-     *     The usedDiscount
+     * The usedDiscount
      */
     public Object getUsedDiscount() {
         return usedDiscount;
@@ -346,7 +345,7 @@ public class Purchase {
     /**
      *
      * @param usedDiscount
-     *     The usedDiscount
+     * The usedDiscount
      */
     public void setUsedDiscount(Object usedDiscount) {
         this.usedDiscount = usedDiscount;

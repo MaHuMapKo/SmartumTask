@@ -6,5 +6,20 @@
     <string name="myPresentsTitle">Мои подарки</string>
 
     <string name="scoreCount">баллов.</string>
-    <string name="scoreLeft">Осталось</string>
+    <string name="presentLeft">Осталось</string>
+<!--toolbar views-->
+    <string name="discount">Ваша скидка:</string>
+    <string name="score">Баллов:</string>
+    <string name="left_before">Осталось до</string>
+    <string name="rub">руб.</string>
+
+    <string name="lookAtMap">Посмотреть на карте.</string>
+
+    <!--Icons names for expandable-->
+    <string name="addressIcon">address.png</string>
+    <string name="urlIcon">url.png</string>
+    <string name="emailIcon">email.png</string>
+    <string name="phoneIcon">phone.png</string>
+    <string name="workSheduleIcon">workshedule.png</string>
+    <string name="mapIcon">map.png</string>
 </resources>
