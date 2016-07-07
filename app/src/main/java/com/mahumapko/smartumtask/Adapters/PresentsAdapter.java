@@ -8,26 +8,28 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mahumapko.smartumtask.MainActivity;
 import com.mahumapko.smartumtask.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PresentsAdapter extends ArrayAdapter {
     Context context;
-    ArrayList<String> images = new ArrayList<>();
-    ArrayList<String> names = new ArrayList<>();
-    ArrayList<Integer> scoreCount = new ArrayList<>();
-    ArrayList<Integer> scoreLeft = new ArrayList<>();
+    List<String> images = new ArrayList<>();
+    List<String> names = new ArrayList<>();
+    List<Integer> scoreCount = new ArrayList<>();
+    List<Integer> presentLeft = new ArrayList<>();
 
-    public PresentsAdapter(Context context, int resource, ArrayList<String> images,
-                           ArrayList<String> names, ArrayList<Integer> scoreCount,
-                           ArrayList<Integer> scoreLeft) {
+    public PresentsAdapter(Context context, int resource, List<String> images,
+                           List<String> names, List<Integer> scoreCount,
+                           List<Integer> presentLeft) {
         super(context, resource, names);
         this.context = context;
         this.images = images;
         this.names = names;
         this.scoreCount = scoreCount;
-        this.scoreLeft = scoreLeft;
+        this.presentLeft = presentLeft;
     }
 
     public View getCustomView(int position, View convertView, ViewGroup parent) {
@@ -35,12 +37,13 @@ public class PresentsAdapter extends ArrayAdapter {
         View root = inflater.inflate(R.layout.presents_item, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(root);
-        viewHolder.image.setImageDrawable(context.getDrawable(R.mipmap.ic_launcher));
+
+        ((MainActivity)context).checkForImage(images.get(position), viewHolder.image);
         viewHolder.name.setText(names.get(position));
         viewHolder.scoreCount.setText(String.format("%s %s", scoreCount.get(position),
                 context.getString(R.string.scoreCount)));
-        viewHolder.scoreLeft.setText(String.format("%s %s", context.getString(R.string.scoreLeft),
-                scoreLeft.get(position)));
+        viewHolder.scoreLeft.setText(String.format("%s %s", context.getString(R.string.presentLeft),
+                presentLeft.get(position)));
 
         return root;
     }
