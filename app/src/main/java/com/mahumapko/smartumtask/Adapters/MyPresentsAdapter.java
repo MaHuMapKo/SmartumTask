@@ -8,18 +8,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mahumapko.smartumtask.MainActivity;
 import com.mahumapko.smartumtask.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyPresentsAdapter extends ArrayAdapter {
     Context context;
-    ArrayList<String> images = new ArrayList<>();
-    ArrayList<String> names = new ArrayList<>();
-    ArrayList<Integer> scoreCount = new ArrayList<>();
+    List<String> images = new ArrayList<>();
+    List<String> names = new ArrayList<>();
+    List<Integer> scoreCount = new ArrayList<>();
 
-    public MyPresentsAdapter(Context context, int resource, ArrayList<String> images,
-                           ArrayList<String> names, ArrayList<Integer> scoreCount) {
+    public MyPresentsAdapter(Context context, int resource, List<String> images,
+                           List<String> names, List<Integer> scoreCount) {
         super(context, resource, names);
         this.context = context;
         this.images = images;
@@ -32,7 +34,7 @@ public class MyPresentsAdapter extends ArrayAdapter {
         View root = inflater.inflate(R.layout.presents_item, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(root);
-        viewHolder.image.setImageDrawable(context.getDrawable(R.mipmap.ic_launcher));
+        ((MainActivity)context).checkForImage(images.get(position), viewHolder.image);
         viewHolder.name.setText(names.get(position));
         viewHolder.scoreCount.setText(String.format("%s %s", scoreCount.get(position),
                 context.getString(R.string.scoreCount)));
