@@ -16,9 +16,9 @@
     <string name="lookAtMap">Посмотреть на карте.</string>
 
     <!--Icons names for expandable-->
-    <string name="urlIcon">ic_public_black_24dp.png</string>
-    <string name="emailIcon">ic_mail_black_24dp.png</string>
-    <string name="phoneIcon">ic_call_black_24dp.png</string>
-    <string name="workSheduleIcon">ic_access_time_black_24dp.png</string>
-    <string name="addressIcon">ic_subdirectory_arrow_right_black_24dp.png</string>
+    <string name="urlIcon">ic_public_black_24dp</string>
+    <string name="emailIcon">ic_mail_black_24dp</string>
+    <string name="phoneIcon">ic_call_black_24dp</string>
+    <string name="workSheduleIcon">ic_access_time_black_24dp</string>
+    <string name="addressIcon">ic_subdirectory_arrow_right_black_24dp</string>
 </resources>
