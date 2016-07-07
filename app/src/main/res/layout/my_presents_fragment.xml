@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/my_presents_list"
         android:background="@drawable/custom_shape"
+        android:divider="#d4d4d4"
+        android:dividerHeight="4dp"
         >
     </ListView>
 
