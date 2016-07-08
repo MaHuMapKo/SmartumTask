@@ -1,6 +1,5 @@
 package com.mahumapko.smartumtask.Fragments;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,20 +8,17 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.mahumapko.smartumtask.Adapters.PresentsAdapter;
+import com.mahumapko.smartumtask.JSONConverter;
 import com.mahumapko.smartumtask.POJO.Presents.Present;
 import com.mahumapko.smartumtask.POJO.Presents.Presents;
 import com.mahumapko.smartumtask.R;
 
-import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PresentsFragment extends Fragment {
-
+    PresentsAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,29 +37,10 @@ public class PresentsFragment extends Fragment {
             }
         });
 
-        Presents presents = getDataFromJson();
+        Presents presents = JSONConverter.getDataFromPresents(getActivity());
         createAdapter(presents, list);
 
         return root;
-    }
-
-    private Presents getDataFromJson() {
-        AssetManager am = getResources().getAssets();
-        String json;
-        try {
-            InputStream is = am.open("presents.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            json = new String(buffer, Charset.forName("UTF-8"));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        Gson gson = new GsonBuilder().create();
-        return gson.fromJson(json, Presents.class);
     }
 
     private void createAdapter(Presents presents, ListView listView) {
@@ -82,8 +59,12 @@ public class PresentsFragment extends Fragment {
             presentLeft.add(leftCount);
         }
 
-        PresentsAdapter adapter = new PresentsAdapter(getActivity(), R.layout.presents_item,
+        adapter = new PresentsAdapter(getActivity(), R.layout.presents_item,
                 images, names, scoreCount, presentLeft);
         listView.setAdapter(adapter);
+    }
+
+    public PresentsAdapter getPresentsAdapter() {
+        return adapter;
     }
 }

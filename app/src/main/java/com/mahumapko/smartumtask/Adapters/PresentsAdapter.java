@@ -1,6 +1,7 @@
 package com.mahumapko.smartumtask.Adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mahumapko.smartumtask.MainActivity;
 import com.mahumapko.smartumtask.R;
+import com.mahumapko.smartumtask.Util;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,18 @@ public class PresentsAdapter extends ArrayAdapter {
 
         ViewHolder viewHolder = new ViewHolder(root);
 
-        ((MainActivity)context).checkForImage(images.get(position), viewHolder.image);
+        if (images.get(position)!=null) {
+            File file = new File(context.getFilesDir(), Util.getFileName(images.get(position)));
+            if (file.exists()) {
+                Uri uri = Uri.fromFile(file);
+                viewHolder.image.setImageURI(uri);
+            } else {
+                viewHolder.image.setImageDrawable(context.getDrawable(R.mipmap.ic_launcher));
+            }
+        } else {
+            viewHolder.image.setImageDrawable(context.getDrawable(R.mipmap.ic_launcher));
+        }
+
         viewHolder.name.setText(names.get(position));
         viewHolder.scoreCount.setText(String.format("%s %s", scoreCount.get(position),
                 context.getString(R.string.scoreCount)));
