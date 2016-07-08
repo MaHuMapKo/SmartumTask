@@ -1,10 +1,8 @@
 package com.mahumapko.smartumtask;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
@@ -19,8 +17,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.mahumapko.smartumtask.Adapters.ViewPagerAdapter;
 import com.mahumapko.smartumtask.Fragments.AboutUsFragment;
 import com.mahumapko.smartumtask.Fragments.DevelopDialog;
@@ -37,29 +33,33 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
 
 public class MainActivity extends AppCompatActivity {
-    ViewPagerAdapter adapter;
+    public static List<String> images = new ArrayList<>();
+    static ViewPagerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (!isNetworkConnected()) {
+        if (!Util.isNetworkConnected(this)) {
             Toast.makeText(this, getString(R.string.noInternet), Toast.LENGTH_LONG).show();
         }
 
         setClickers();
 
-
-
         setupTabLayout();
-        convertCardJson();
+        Card card = JSONConverter.convertCardJson(this);
+        getCardData(card);
+        images = JSONConverter.getImagesFromPresents(this, images);
+        images = JSONConverter.getImagesFromMyPresents(this, images);
+
+        new DownloadImages(this, images, true).execute();
     }
 
     private void setClickers() {
@@ -101,28 +101,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    public void convertCardJson() {
-        AssetManager am = getResources().getAssets();
-        String json;
-        try {
-            InputStream is = am.open("clientCard.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            json = new String(buffer, Charset.forName("UTF-8"));
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        Gson gson = new GsonBuilder().create();
-        Card card = gson.fromJson(json, Card.class);
-        getCardData(card);
-
-    }
-
     private void getCardData(Card card) {
         CardDto cardDto = card.getCardDto();
 
@@ -140,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         sentShopsListToFragment(shops);
 
         ImageView view = (ImageView) findViewById(R.id.cardImage);
-        checkForImage(imagePath, view);
+        new DownloadImages(this, imagePath, false, view).execute();
     }
 
     private void putDataInToolbar(String name, Double discount, Integer scores, Double nextDiscount,
@@ -166,96 +144,88 @@ public class MainActivity extends AppCompatActivity {
         ((AboutUsFragment) adapter.getItem(0)).setListAndConvert(list);
     }
 
-    public void checkForImage(String imagePath, ImageView view) {
-        if (imagePath!=null) {
-            String[] splittedPath = imagePath.split("/");
-            String fileName = splittedPath[splittedPath.length - 1];
-
-            File file = new File(getFilesDir(), fileName);
-            if (!file.exists()) {
-                if (isNetworkConnected()) {
-                    int samplesize;
-                    if (view.getId() == R.id.cardImage)
-                        samplesize = 2;
-                    else
-                        samplesize = 8;
-                    DownloadImageTask downloadImageTask = new DownloadImageTask(this, imagePath, fileName,
-                            view, samplesize);
-                    downloadImageTask.execute();
-                } else
-                    view.setImageDrawable(getDrawable(R.mipmap.ic_launcher));
-            } else {
-                Uri uri = Uri.fromFile(file);
-                view.setImageURI(uri);
-            }
-        } else {
-            view.setImageDrawable(getDrawable(R.mipmap.ic_launcher));
-        }
-    }
-
-    private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        return cm.getActiveNetworkInfo() != null;
-    }
-
-    public static class DownloadImageTask extends AsyncTask<Void, Void, Void> {
+    public static class DownloadImages extends AsyncTask<Void, Void, Void> {
+        List<String> images = new ArrayList<>();
         Context context;
-        String imagePath, fileName;
-        Bitmap bitmap;
+        boolean isMupltiple;
+        String image;
         ImageView view;
-        int sampleSize;
 
-        public DownloadImageTask(Context context, String imagePath, String fileName, ImageView view,
-                                 int sampleSize) {
+        public DownloadImages(Context context, List<String> images, boolean isMupltiple) {
+            this.images = images;
             this.context = context;
-            this.imagePath = imagePath;
-            this.fileName = fileName;
+            this.isMupltiple = isMupltiple;
+        }
+
+        public DownloadImages(Context context, String image, boolean isMupltiple, ImageView view) {
+            this.context = context;
+            this.image = image;
+            this.isMupltiple = isMupltiple;
             this.view = view;
-            this.sampleSize = sampleSize;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            HttpsURLConnection urlConnection = null;
-            try {
-                URL url = new URL(imagePath);
-                urlConnection = (HttpsURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.connect();
-
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inSampleSize = sampleSize;
-                InputStream input = urlConnection.getInputStream();
-                bitmap = BitmapFactory.decodeStream(input, null, options);
-                return null;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            } finally {
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
+            if (isMupltiple) {
+                for (int i = 0; i < images.size(); i++) {
+                    String imagePath = images.get(i);
+                    downloadImage(imagePath, 8);
                 }
+            } else {
+                downloadImage(image, 2);
             }
+            return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if (bitmap!=null) {
-                OutputStream outStream = null;
-                try {
-                    File file = new File(context.getFilesDir(), fileName);
+            if (isMupltiple) {
+                ((PresentsFragment) adapter.getItem(1)).getPresentsAdapter().notifyDataSetChanged();
+                ((MyPresentsFragment) adapter.getItem(2)).getMyPresentsAdapter().notifyDataSetChanged();
+            } else {
+                File file = new File(context.getFilesDir(), Util.getFileName(image));
+                Uri uri = Uri.fromFile(file);
+                view.setImageURI(uri);
+            }
+        }
 
-                    outStream = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
-                    outStream.flush();
-                    outStream.close();
+        private void downloadImage(String imagePath, int sampleSize) {
+            HttpsURLConnection urlConnection = null;
+            try {
+                if (imagePath != null) {
+                    String[] splittedPath = imagePath.split("/");
+                    String fileName = splittedPath[splittedPath.length - 1];
 
-                    Uri uri = Uri.fromFile(file);
-                    view.setImageURI(uri);
+                    URL url = new URL(imagePath);
+                    urlConnection = (HttpsURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.connect();
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inSampleSize = sampleSize;
+                    InputStream input = urlConnection.getInputStream();
+                    Bitmap bitmap = BitmapFactory.decodeStream(input, null, options);
+
+                    if (bitmap != null) {
+                        OutputStream outStream = null;
+                        try {
+                            File file = new File(context.getFilesDir(), fileName);
+
+                            outStream = new FileOutputStream(file);
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+                            outStream.flush();
+                            outStream.close();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
                 }
             }
         }
