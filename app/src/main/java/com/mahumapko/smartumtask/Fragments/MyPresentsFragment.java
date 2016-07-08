@@ -1,6 +1,5 @@
 package com.mahumapko.smartumtask.Fragments;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,16 +8,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.mahumapko.smartumtask.Adapters.MyPresentsAdapter;
+import com.mahumapko.smartumtask.JSONConverter;
 import com.mahumapko.smartumtask.POJO.MyPresents.Purchase;
 import com.mahumapko.smartumtask.POJO.MyPresents.Purchases;
 import com.mahumapko.smartumtask.POJO.Presents.Present;
 import com.mahumapko.smartumtask.R;
 
-import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,29 +39,10 @@ public class MyPresentsFragment extends Fragment {
             }
         });
 
-        Purchases purchases = getDataFromJson();
+        Purchases purchases = JSONConverter.getDataFromMyPresents(getActivity());
         createAdapter(purchases, list);
 
         return root;
-    }
-
-    private Purchases getDataFromJson() {
-        AssetManager am = getResources().getAssets();
-        String json;
-        try {
-            InputStream is = am.open("myPresents.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            json = new String(buffer, Charset.forName("UTF-8"));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        Gson gson = new GsonBuilder().create();
-        return gson.fromJson(json, Purchases.class);
     }
 
     private void createAdapter(Purchases purchases, ListView listView) {
