@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyPresentsFragment extends Fragment {
-
+    MyPresentsAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,8 +82,12 @@ public class MyPresentsFragment extends Fragment {
             scoreCount.add(present.getScore());
         }
 
-        MyPresentsAdapter adapter = new MyPresentsAdapter(getActivity(), R.layout.presents_item,
+        adapter = new MyPresentsAdapter(getActivity(), R.layout.presents_item,
                 images, names, scoreCount);
         listView.setAdapter(adapter);
+    }
+
+    public MyPresentsAdapter getMyPresentsAdapter() {
+        return adapter;
     }
 }

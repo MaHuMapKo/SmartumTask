@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PresentsFragment extends Fragment {
-
+    PresentsAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,8 +82,12 @@ public class PresentsFragment extends Fragment {
             presentLeft.add(leftCount);
         }
 
-        PresentsAdapter adapter = new PresentsAdapter(getActivity(), R.layout.presents_item,
+        adapter = new PresentsAdapter(getActivity(), R.layout.presents_item,
                 images, names, scoreCount, presentLeft);
         listView.setAdapter(adapter);
+    }
+
+    public PresentsAdapter getPresentsAdapter() {
+        return adapter;
     }
 }
