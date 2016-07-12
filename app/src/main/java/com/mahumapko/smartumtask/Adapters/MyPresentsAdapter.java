@@ -1,7 +1,6 @@
 package com.mahumapko.smartumtask.Adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mahumapko.smartumtask.R;
-import com.mahumapko.smartumtask.Util;
+import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,17 +35,13 @@ public class MyPresentsAdapter extends ArrayAdapter {
 
         ViewHolder viewHolder = new ViewHolder(root);
 
-        if (images.get(position)!=null) {
-            File file = new File(context.getFilesDir(), Util.getFileName(images.get(position)));
-            if (file.exists()) {
-                Uri uri = Uri.fromFile(file);
-                viewHolder.image.setImageURI(uri);
-            } else {
-                viewHolder.image.setImageDrawable(context.getDrawable(R.mipmap.ic_launcher));
-            }
-        } else {
-            viewHolder.image.setImageDrawable(context.getDrawable(R.mipmap.ic_launcher));
-        }
+        String url = images.get(position);
+
+        Picasso.with(context).load(url)
+                .resize(50, 50)
+                .placeholder(R.mipmap.ic_launcher)
+                .centerCrop()
+                .into(viewHolder.image);
 
         viewHolder.name.setText(names.get(position));
         viewHolder.scoreCount.setText(String.format("%s %s", scoreCount.get(position),
