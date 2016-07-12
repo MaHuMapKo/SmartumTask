@@ -2,11 +2,11 @@ package com.mahumapko.smartumtask.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.mahumapko.smartumtask.adapters.PresentsAdapter;
 import com.mahumapko.smartumtask.JSONConverter;
@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Presents extends Fragment {
-    PresentsAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,21 +26,14 @@ public class Presents extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = (View) inflater.inflate(R.layout.presents_fragment, container, false);
 
-        ListView list = (ListView) root.findViewById(R.id.presents_list);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                DevelopDialog dialog = new DevelopDialog();
-                dialog.show(getFragmentManager(), "DialogFragment");
-            }
-        });
+        RecyclerView recycler = (RecyclerView) root.findViewById(R.id.recycler);
 
-        createAdapter(list);
+        createAdapter(recycler);
 
         return root;
     }
 
-    private void createAdapter(ListView listView) {
+    private void createAdapter(RecyclerView recycler) {
         List<Present> list = new JSONConverter().getPresents(getActivity());
         List<String> images = new ArrayList<>();
         List<String> names = new ArrayList<>();
@@ -57,9 +49,10 @@ public class Presents extends Fragment {
             presentLeft.add(leftCount);
         }
 
-        adapter = new PresentsAdapter(getActivity(), R.layout.presents_item,
-                images, names, scoreCount, presentLeft);
-        listView.setAdapter(adapter);
+        PresentsAdapter adapter = new PresentsAdapter(getActivity(), images, names, scoreCount,
+                presentLeft);
+        recycler.setAdapter(adapter);
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
 }
