@@ -5,8 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="purple">#C71585</color>
-    <color name="dark_grey">#2F4F4F</color>
-
-    <color name="green">#32CD32</color>
+    <color name="purple">#C8098A</color>
+    <color name="dark_grey">#595959</color>
+    <color name="grey">#616161</color>
+    <color name="green">#22B36A</color>
 </resources>
