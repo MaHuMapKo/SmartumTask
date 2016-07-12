@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PresentsAdapter extends RecyclerView.Adapter<PresentsAdapter.ViewHolder> {
+public class PresentsAdapter extends RecyclerView.Adapter<PresentsAdapter.PresentsViewHolder> {
 
     Context context;
     List<String> images = new ArrayList<>();
@@ -34,17 +34,17 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsAdapter.ViewHo
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PresentsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = inflater.inflate(R.layout.presents_item, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(context, view);
+        PresentsViewHolder viewHolder = new PresentsViewHolder(context, view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(PresentsViewHolder holder, int position) {
         String url = images.get(position);
 
         Picasso.with(context).load(url)
@@ -65,14 +65,14 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsAdapter.ViewHo
         return names.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class PresentsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public final ImageView image;
         public final TextView name;
         public final TextView scoreCount;
         public final TextView scoreLeft;
         Context context;
 
-        public ViewHolder(Context context, View view) {
+        public PresentsViewHolder(Context context, View view) {
             super(view);
             image = (ImageView) view.findViewById(R.id.image);
             name = (TextView) view.findViewById(R.id.name);
