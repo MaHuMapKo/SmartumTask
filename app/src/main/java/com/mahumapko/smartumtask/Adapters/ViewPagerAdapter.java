@@ -1,4 +1,4 @@
-package com.mahumapko.smartumtask.Adapters;
+package com.mahumapko.smartumtask.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

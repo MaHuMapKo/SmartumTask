@@ -1,4 +1,4 @@
-package com.mahumapko.smartumtask.Adapters;
+package com.mahumapko.smartumtask.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

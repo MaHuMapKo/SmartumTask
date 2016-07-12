@@ -12,11 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mahumapko.smartumtask.Adapters.ViewPagerAdapter;
-import com.mahumapko.smartumtask.Fragments.AboutUsFragment;
-import com.mahumapko.smartumtask.Fragments.DevelopDialog;
-import com.mahumapko.smartumtask.Fragments.MyPresentsFragment;
-import com.mahumapko.smartumtask.Fragments.PresentsFragment;
+import com.mahumapko.smartumtask.adapters.ViewPagerAdapter;
+import com.mahumapko.smartumtask.fragments.ShopsDescription;
+import com.mahumapko.smartumtask.fragments.DevelopDialog;
+import com.mahumapko.smartumtask.fragments.MyPresents;
+import com.mahumapko.smartumtask.fragments.Presents;
 import com.mahumapko.smartumtask.POJO.ClientCard.Card;
 import com.mahumapko.smartumtask.POJO.ClientCard.CardDto;
 import com.mahumapko.smartumtask.POJO.ClientCard.Shop;
@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AboutUsFragment(), getString(R.string.aboutUsTitle));
-        adapter.addFragment(new PresentsFragment(), getString(R.string.presentsTitle));
-        adapter.addFragment(new MyPresentsFragment(), getString(R.string.myPresentsTitle));
+        adapter.addFragment(new ShopsDescription(), getString(R.string.aboutUsTitle));
+        adapter.addFragment(new Presents(), getString(R.string.presentsTitle));
+        adapter.addFragment(new MyPresents(), getString(R.string.myPresentsTitle));
         viewPager.setAdapter(adapter);
     }
 
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sentShopsListToFragment(List<Shop> list) {
-        ((AboutUsFragment) adapter.getItem(0)).setListAndConvert(list);
+        ((ShopsDescription) adapter.getItem(0)).setShopsList(list);
     }
 
 }

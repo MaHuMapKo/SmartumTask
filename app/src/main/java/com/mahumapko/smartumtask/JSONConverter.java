@@ -5,7 +5,7 @@ import android.content.res.AssetManager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mahumapko.smartumtask.Abstract.DataService;
+import com.mahumapko.smartumtask.abs.DataService;
 import com.mahumapko.smartumtask.POJO.ClientCard.Card;
 import com.mahumapko.smartumtask.POJO.MyPresents.Purchase;
 import com.mahumapko.smartumtask.POJO.MyPresents.Purchases;

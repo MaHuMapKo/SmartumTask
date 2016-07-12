@@ -11,14 +11,4 @@ public class Util {
 
         return cm.getActiveNetworkInfo() != null;
     }
-
-    public static String getFileName(String imagePath) {
-        if (imagePath!=null) {
-            String[] splittedPath = imagePath.split("/");
-            String fileName = splittedPath[splittedPath.length - 1];
-            return fileName;
-        } else {
-            return null;
-        }
-    }
 }
