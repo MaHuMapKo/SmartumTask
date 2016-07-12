@@ -11,7 +11,6 @@ import android.widget.ListView;
 import com.mahumapko.smartumtask.Adapters.PresentsAdapter;
 import com.mahumapko.smartumtask.JSONConverter;
 import com.mahumapko.smartumtask.POJO.Presents.Present;
-import com.mahumapko.smartumtask.POJO.Presents.Presents;
 import com.mahumapko.smartumtask.R;
 
 import java.util.ArrayList;
@@ -37,14 +36,13 @@ public class PresentsFragment extends Fragment {
             }
         });
 
-        Presents presents = JSONConverter.getDataFromPresents(getActivity());
-        createAdapter(presents, list);
+        createAdapter(list);
 
         return root;
     }
 
-    private void createAdapter(Presents presents, ListView listView) {
-        List<Present> list = presents.getPresents();
+    private void createAdapter(ListView listView) {
+        List<Present> list = new JSONConverter().getPresents(getActivity());
         List<String> images = new ArrayList<>();
         List<String> names = new ArrayList<>();
         List<Integer> scoreCount = new ArrayList<>();
@@ -64,7 +62,4 @@ public class PresentsFragment extends Fragment {
         listView.setAdapter(adapter);
     }
 
-    public PresentsAdapter getPresentsAdapter() {
-        return adapter;
-    }
 }
