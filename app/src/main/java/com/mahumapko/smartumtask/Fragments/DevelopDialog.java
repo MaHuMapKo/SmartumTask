@@ -1,4 +1,4 @@
-package com.mahumapko.smartumtask.Fragments;
+package com.mahumapko.smartumtask.fragments;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

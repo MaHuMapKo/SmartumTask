@@ -1,4 +1,4 @@
-package com.mahumapko.smartumtask.Fragments;
+package com.mahumapko.smartumtask.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.mahumapko.smartumtask.Adapters.MyPresentsAdapter;
+import com.mahumapko.smartumtask.adapters.MyPresentsAdapter;
 import com.mahumapko.smartumtask.JSONConverter;
 import com.mahumapko.smartumtask.POJO.MyPresents.Purchase;
 import com.mahumapko.smartumtask.POJO.Presents.Present;
@@ -17,7 +17,7 @@ import com.mahumapko.smartumtask.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPresentsFragment extends Fragment {
+public class MyPresents extends Fragment {
     MyPresentsAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
