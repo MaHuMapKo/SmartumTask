@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(name);
     }
-
+k
     private void sentShopsListToFragment(List<Shop> list) {
         ((AboutUsFragment) adapter.getItem(0)).setListAndConvert(list);
     }
