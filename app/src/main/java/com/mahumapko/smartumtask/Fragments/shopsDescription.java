@@ -1,4 +1,4 @@
-package com.mahumapko.smartumtask.Fragments;
+package com.mahumapko.smartumtask.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.mahumapko.smartumtask.Adapters.AboutUsAdapter;
+import com.mahumapko.smartumtask.adapters.AboutUsAdapter;
 import com.mahumapko.smartumtask.POJO.ClientCard.Shop;
 import com.mahumapko.smartumtask.R;
 
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AboutUsFragment extends Fragment{
+public class ShopsDescription extends Fragment{
     List<Shop> list = new ArrayList<>();
     ExpandableListView expandable;
     @Override
@@ -43,7 +43,7 @@ public class AboutUsFragment extends Fragment{
         return root;
     }
 
-    public void setListAndConvert(List<Shop> list) {
+    public void setShopsList(List<Shop> list) {
         this.list = list;
     }
 
