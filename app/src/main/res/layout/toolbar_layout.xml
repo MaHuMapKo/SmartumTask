@@ -67,9 +67,11 @@
 
     <ProgressBar
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="10dp"
         style="@android:style/Widget.Material.ProgressBar.Horizontal"
         android:id="@+id/discount_progress"
+        android:progressDrawable="@drawable/progress"
+        android:progress="10"
         android:max="100" />
 
 </LinearLayout>
