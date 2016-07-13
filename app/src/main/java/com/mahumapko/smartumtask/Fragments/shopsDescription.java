@@ -2,24 +2,26 @@ package com.mahumapko.smartumtask.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 
-import com.mahumapko.smartumtask.adapters.AboutUsAdapter;
 import com.mahumapko.smartumtask.POJO.ClientCard.Shop;
 import com.mahumapko.smartumtask.R;
+import com.mahumapko.smartumtask.RecyclerItemDecoration;
+import com.mahumapko.smartumtask.adapters.ShopDescriptionAdapter;
+import com.mahumapko.smartumtask.adapters.shopDescripion.model.Child;
+import com.mahumapko.smartumtask.adapters.shopDescripion.model.Parent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ShopsDescription extends Fragment{
     List<Shop> list = new ArrayList<>();
-    ExpandableListView expandable;
+
+    RecyclerView recyclerView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,19 +29,12 @@ public class ShopsDescription extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = (View) inflater.inflate(R.layout.about_us_fragment, container, false);
+        View root = (View) inflater.inflate(R.layout.shop_description_fragment, container, false);
 
-        expandable = (ExpandableListView) root.findViewById(R.id.expandableList);
-        expandable.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                DevelopDialog dialog = new DevelopDialog();
-                dialog.show(getFragmentManager(), "DialogFragment");
-                return false;
-            }
-        });
 
-        convertDataToLists();
+        recyclerView = (RecyclerView) root.findViewById(R.id.recycler);
+
+        createAdapter();
         return root;
     }
 
@@ -47,55 +42,41 @@ public class ShopsDescription extends Fragment{
         this.list = list;
     }
 
-    private void convertDataToLists() {
-        List<String> titles = new ArrayList<>();
-        Map<String, List<String>> childsMap = new HashMap<>();
-        Map<String, List<String>> imagesMap = new HashMap<>();
+    private void createAdapter() {
+        List<Parent> parentList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
+            List<Object> childsList = new ArrayList<>();
+
+            //create parent
             Shop shop = list.get(i);
             String city = shop.getCity().getName();
             String address = shop.getAddress();
             String fullAddress = String.format("%s, %s", city, address);
-            titles.add(fullAddress);
 
-            //add parametres to child list and images list
-            List<String> childsList = new ArrayList<>();
-            List<String> imagesList = new ArrayList<>();
-            childsList.add(fullAddress);
-            imagesList.add(getString(R.string.addressIcon));
-            childsList.add(shop.getUrl());
-            imagesList.add(getString(R.string.urlIcon));
-            childsList.add(shop.getEmail());
-            imagesList.add(getString(R.string.emailIcon));
+            //create childs
+            childsList.add(new Child(fullAddress, getString(R.string.addressIcon)));
+            childsList.add(new Child(shop.getUrl(), getString(R.string.urlIcon)));
+            childsList.add(new Child(shop.getEmail(), getString(R.string.emailIcon)));
 
-            childsList = checkForMultiplePhones(shop.getPhone(), childsList, imagesList);
-            childsList.add(shop.getWorkSchedule());
-            imagesList.add(getString(R.string.workSheduleIcon));
+            childsList = checkForMultiplePhones(shop.getPhone(), childsList);
 
-            childsMap.put(titles.get(i), childsList);
-            imagesMap.put(titles.get(i), imagesList);
+            childsList.add(new Child(shop.getWorkSchedule(), getString(R.string.workSheduleIcon)));
+
+            parentList.add(new Parent(fullAddress, childsList));
         }
 
-        AboutUsAdapter adapter = new AboutUsAdapter(getActivity(), titles, childsMap, imagesMap);
-        DisplayMetrics metrics = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int width = metrics.widthPixels;
-        expandable.setIndicatorBoundsRelative(width-getPixelFromDips(40), width - getPixelFromDips(20));
-        expandable.setAdapter(adapter);
+        ShopDescriptionAdapter shopDescriptionAdapter = new ShopDescriptionAdapter(getActivity(), parentList);
+
+        recyclerView.setAdapter(shopDescriptionAdapter);
+        recyclerView.addItemDecoration(new RecyclerItemDecoration(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-    private int getPixelFromDips(float pixels) {
-        final float scale = getResources().getDisplayMetrics().density;
-        return (int) (pixels * scale + 0.5f);
-    }
-
-    private List<String> checkForMultiplePhones(String phone, List<String> childsList,
-                                                List<String> imagesList) {
+    private List<Object> checkForMultiplePhones(String phone, List<Object> childsList) {
         String[] phones  = phone.split(",");
         if (phones.length>1) {
             for (int i = 0; i < phones.length; i++) {
-                childsList.add(phones[i]);
-                imagesList.add(getActivity().getString(R.string.phoneIcon));
+                childsList.add(new Child(phones[i], getActivity().getString(R.string.phoneIcon)));
             }
         }
         return childsList;
