@@ -1,6 +1,7 @@
 package com.mahumapko.smartumtask.adapters;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mahumapko.smartumtask.MainActivity;
 import com.mahumapko.smartumtask.R;
+import com.mahumapko.smartumtask.fragments.DevelopDialog;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -71,11 +74,15 @@ public class MyPresentsAdapter extends RecyclerView.Adapter<MyPresentsAdapter.My
             name = (TextView) view.findViewById(R.id.name);
             scoreCount = (TextView) view.findViewById(R.id.score_count);
             this.context = context;
+
+            view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(context, "BLABLA", Toast.LENGTH_LONG).show();
+            FragmentManager manager = ((MainActivity) context).getSupportFragmentManager();
+            DevelopDialog dialog = new DevelopDialog();
+            dialog.show(manager, "DialogFragment");
         }
     }
 }

@@ -1,13 +1,16 @@
 package com.mahumapko.smartumtask.adapters.shopDescripion.viewHolders;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
+import com.mahumapko.smartumtask.MainActivity;
 import com.mahumapko.smartumtask.R;
+import com.mahumapko.smartumtask.fragments.DevelopDialog;
 
 
 public class MyChild extends ChildViewHolder {
@@ -23,7 +26,9 @@ public class MyChild extends ChildViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "BLABLA", Toast.LENGTH_LONG).show();
+                FragmentManager manager = ((MainActivity) context).getSupportFragmentManager();
+                DevelopDialog dialog = new DevelopDialog();
+                dialog.show(manager, "DialogFragment");
             }
         });
     }
