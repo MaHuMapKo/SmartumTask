@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mahumapko.smartumtask.RecyclerItemDecoration;
 import com.mahumapko.smartumtask.adapters.MyPresentsAdapter;
 import com.mahumapko.smartumtask.JSONConverter;
 import com.mahumapko.smartumtask.POJO.MyPresents.Purchase;
@@ -51,6 +52,7 @@ public class MyPresents extends Fragment {
 
         MyPresentsAdapter adapter = new MyPresentsAdapter(getActivity(), images, names, scoreCount);
         recycler.setAdapter(adapter);
+        recycler.addItemDecoration(new RecyclerItemDecoration(getActivity()));
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 }

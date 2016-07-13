@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.mahumapko.smartumtask.POJO.ClientCard.Shop;
 import com.mahumapko.smartumtask.R;
+import com.mahumapko.smartumtask.RecyclerItemDecoration;
 import com.mahumapko.smartumtask.adapters.ShopDescriptionAdapter;
 import com.mahumapko.smartumtask.adapters.shopDescripion.model.Child;
 import com.mahumapko.smartumtask.adapters.shopDescripion.model.Parent;
@@ -67,6 +68,7 @@ public class ShopsDescription extends Fragment{
         ShopDescriptionAdapter shopDescriptionAdapter = new ShopDescriptionAdapter(getActivity(), parentList);
 
         recyclerView.setAdapter(shopDescriptionAdapter);
+        recyclerView.addItemDecoration(new RecyclerItemDecoration(getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 

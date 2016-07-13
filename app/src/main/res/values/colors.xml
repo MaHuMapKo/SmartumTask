@@ -9,4 +9,6 @@
     <color name="dark_grey">#595959</color>
     <color name="grey">#616161</color>
     <color name="green">#22B36A</color>
+
+    <color name="divider">#F2EEEB</color>
 </resources>
